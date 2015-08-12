@@ -6,6 +6,7 @@ import hxargs.Args;
 import haxe.Json;
 import sys.FileSystem;
 import checkstyle.reporter.XMLReporter;
+import checkstyle.reporter.JSONReporter;
 import checkstyle.reporter.Reporter;
 import haxe.CallStack;
 import sys.io.File;
@@ -120,6 +121,7 @@ class Main {
 	static function createReporter():IReporter {
 		return switch(REPORT_TYPE) {
 			case "xml": new XMLReporter(PATH, STYLE);
+			case "json": new JSONReporter(PATH, STYLE);
 			case "text": new Reporter();
 			default: throw "Unknown reporter";
 		}
